@@ -1,0 +1,20 @@
+name: Publish GRC
+on: push
+
+
+jobs:
+  build_publish_docker_hub:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Build and Push
+      uses: zemuldo/docker-build-push@master
+      env:
+        DOCKER_USERNAME: "cloudnat"
+       # DOCKER_NAMESPACE: "docker_name_space"
+        DOCKER_PASSWORD: ${{ secrets.DOCKERhub_token }}
+        REGISTRY_URL: "docker.io"
+      with:
+       image_name: "car-app2"
+       image_tag: "latest"
