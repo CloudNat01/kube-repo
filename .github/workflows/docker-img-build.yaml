@@ -1,4 +1,4 @@
-name: Publish GRC
+name: ci
 on: push
 
 
@@ -13,7 +13,7 @@ jobs:
       env:
         DOCKER_USERNAME: "cloudnat"
        # DOCKER_NAMESPACE: "docker_name_space"
-        DOCKER_PASSWORD: ${{ secrets.DOCKERhub_token }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_token }}
         REGISTRY_URL: "docker.io"
       with:
        image_name: "car-app2"
