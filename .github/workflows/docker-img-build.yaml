@@ -16,5 +16,5 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_token }}
         REGISTRY_URL: "docker.io"
       with:
-       image_name: "car-app2"
+       image_name: "cloudnat/car-app2"
        image_tag: "latest"
