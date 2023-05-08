@@ -6,15 +6,15 @@ jobs:
   build_publish_docker_hub:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-
-    - name: Build and Push
-      uses: zemuldo/docker-build-push@master
-      env:
-        DOCKER_USERNAME: "cloudnat"
-       # DOCKER_NAMESPACE: "docker_name_space"
-        DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_token }}
-        REGISTRY_URL: "docker.io"
-      with:
-       image_name: "cloudnat/car-app2"
-       image_tag: "latest"
+        - uses: actions/checkout@v1.0
+          name: Check out code
+      
+        - uses: mr-smithers-excellent/docker-build-push@v3
+          name: Build & push Docker image
+          with:
+            image: ${{ secrets.DOCKERHUB_USERNAME }}/car-app2
+            tags: v1, latest
+            registry: docker.io
+            dockerfile: Dockerfile
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_TOKEN }}
